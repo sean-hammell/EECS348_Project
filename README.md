@@ -5,8 +5,8 @@ This repository stores Group 14's Arithmetic Expression Evaluator, the semester 
 The Arithmetic Expression Evalutator is an application for calculating an expression given by the user, and includes functionality for numerous operations (addition, subtraction, multiplication, division, exponentiation), as well as compatibility with parentheses. The evaluation is done in the proper order of operations, following PEMDAS rules.
 
 Artifacts currently in this repository include:
-  Meeting Notes
-  Project Management Plan
-  Roles and Responsibilities
-  Software Requirements Specifications
-  Project Team Member Contacts
+- Meeting Notes
+- Project Management Plan
+- Roles and Responsibilities
+- Software Requirements Specifications
+- Project Team Member Contacts
