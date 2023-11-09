@@ -9,4 +9,5 @@ Artifacts currently in this repository include:
 - Project Management Plan
 - Roles and Responsibilities
 - Software Requirements Specifications
+- Software Architecture Document
 - Project Team Member Contacts
