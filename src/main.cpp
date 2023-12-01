@@ -120,7 +120,7 @@ int main() {
 	while (1) {
 		
 		// prompt the user and store the equation they give
-		std::cout << "Enter an equation: ";
+		std::cout << "Enter an expression: ";
 		std::string equation;
 		std::getline(std::cin, equation);
 		
