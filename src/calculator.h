@@ -5,7 +5,7 @@
 #include <string>
 #include <cmath>
 #include <cstring>
-
+#include <stdexcept>
 #include <vector>
 #include "stack.h"
 
@@ -29,9 +29,9 @@ int operatorPrec(const char c) {
 		case '%':
 			return 2;
 		case 'n':
-			return 0;
+			return 3;
 		case 'p':
-			return 0;
+			return 3;
 		default:
 			return -1;
 	}
@@ -69,7 +69,7 @@ bool isDigit(const char c) {
 
 bool isBinaryOperator(const char c) {
 	switch(c) {
-		case'+':
+		case '+':
 			return true;
 		case '-':
 			return true;
@@ -115,10 +115,16 @@ double computeBinaryOperation (const double lhs, const double rhs, const std::st
 		case '*':
 			return lhs * rhs;
 		case '/':
+			if (rhs == 0) {
+				throw std::domain_error("Error: Division by Zero");
+			}
 			return lhs / rhs;
 		case '^':
 			return pow(lhs,rhs);
 		case '%':
+			if (rhs == 0) {
+				throw std::domain_error("Error: Division by Zero");
+			}
 			return std::fmod(lhs,rhs);
 		default:
 			std::cout << "Error: unknown operator: " << opt << std::endl;
@@ -131,6 +137,7 @@ double computeUnaryOperation (const double num, const std::string& opt) {
 		case 'n':
 			return num * -1;
 		case 'p':
+			return num * (num < 0 ? -1 : 1);
 			return abs(num);
 		default:
 			std::cout << "Error: unknown operator: " << opt << std::endl;

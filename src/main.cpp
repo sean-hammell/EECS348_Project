@@ -3,6 +3,7 @@
 #include <string>
 #include <cstring>
 #include <algorithm>
+#include <stdexcept>
 
 /*
 	TO DO:
@@ -146,7 +147,7 @@ int main() {
 							if ((equation[i+1] == '-' || equation[i+1] == '+') && i + 2 < equation.length()) {
 								
 								// if the character to the right of the operator is not a digit, than it is an invalid use of the parenthesis
-								if (!isDigit(equation[i+2])) {
+								if (!(isDigit(equation[i+2]) || isValidParenthesis(equation[i+2]))) {
 									cont = 3;
 									break;
 								}
@@ -176,10 +177,11 @@ int main() {
 		}
 		
 		if (!cont) {
-			if (counter > 1) cont = 4;
-			else if (counter < 1) cont = 5;
-			else if (parens != 0) cont = 2;
+			if (parens != 0) cont = 2;
 		}
+
+		if (counter > 1) cont = 4;
+		else if (counter < 1) cont = 5;
 		
 		// print an error message depending on the type of error encountered
 		switch (cont) {
@@ -204,7 +206,13 @@ int main() {
 		if (cont) continue;
 		
 		// print the calculation
-		std::cout << calculate(equation) << std::endl;
+		double result;
+		try {
+			result = calculate(equation);
+			std::cout << result << std::endl;
+		} catch (const std::domain_error& error) {
+			std::cout << error.what() << std::endl;
+		}
 	}
 
 	std::cout << "Exiting..." << std::endl;
