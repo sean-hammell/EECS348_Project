@@ -29,9 +29,9 @@ int operatorPrec(const char c) {
 		case '%':
 			return 2;
 		case 'n':
-			return 3;
+			return 1;
 		case 'p':
-			return 3;
+			return 1;
 		default:
 			return -1;
 	}
@@ -137,8 +137,7 @@ double computeUnaryOperation (const double num, const std::string& opt) {
 		case 'n':
 			return num * -1;
 		case 'p':
-			return num * (num < 0 ? -1 : 1);
-			return abs(num);
+			return num;
 		default:
 			std::cout << "Error: unknown operator: " << opt << std::endl;
 			return 0.0;
@@ -310,7 +309,6 @@ double calPostfix(const std::vector<std::string>& postfix_tokens) {
 	for (int i = 0; i < postfix_tokens.size(); i++) {
 		// store the current token
 		std::string token = postfix_tokens[i];
-		
 		
 		/*
 			If the current token is an operator, use the top two values on the stack as the operands and
