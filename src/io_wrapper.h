@@ -5,24 +5,24 @@
 
 class IOWrapper {
 public:
-  enum TokenTypes {
-    Base,
-    Digit,
-    UnaryOperator,
-    BinaryOperator,
-    LeftParen,
-    RightParen
-  };
+    enum TokenTypes {
+        Base,
+        Digit,
+        UnaryOperator,
+        BinaryOperator,
+        LeftParen,
+        RightParen
+    };
 
-  IOWrapper() = default;
+    IOWrapper() = default;
 
-  IOWrapper(const IOWrapper&) = delete;
-  IOWrapper& operator=(const IOWrapper&) = delete;
+    IOWrapper(const IOWrapper&) = delete;
+    IOWrapper& operator=(const IOWrapper&) = delete;
 
-  ~IOWrapper() = default;
+    ~IOWrapper() = default;
 
-  std::string Prompt();
-  void Validate(const std::string& equation);
+    std::string Prompt();
+    void Validate(const std::string& equation);
 };
 
 #endif  // __IO_WRAPPER_H__
